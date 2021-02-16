@@ -1,13 +1,20 @@
 # 二维清单
-# 读取清单
+
 products = []
-with open('products.csv', 'r', encoding='utf-8') as f :
-    for line in f :
-        if '商品,价格' in line :
-            continue
-        name,price = line.strip().split(',')
-        products.append([name, price])
-print(products)
+# 检查档案在不在文件夹
+import os # 引入作业系统
+if os.path.isfile('products.csv'):
+    print('找到文件了')
+    # 读取清单
+    with open('products.csv', 'r', encoding='utf-8') as f :
+        for line in f :
+            if '商品,价格' in line :
+                continue
+            name,price = line.strip().split(',')
+            products.append([name, price])
+    print(products)
+else :
+    print('文件不存在')
 
 # 追加输入商品价格
 while True :
